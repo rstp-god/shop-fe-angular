@@ -1,0 +1,5 @@
+.footercontainer{
+    height:300px;
+    display : flex; 
+    border : 1px solid black;
+}

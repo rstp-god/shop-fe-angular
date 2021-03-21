@@ -1,0 +1,14 @@
+<div class="container" [ngStyle]="{width: containerWidth}" (window:resize)="changeContainerWidth()"> 
+    <ng-container *ngFor="let slide of slides; let index=index" [ngStyle]="{width: containerWidth}" (window:resize)="changeContainerWidth()">
+        <img  
+        [ngStyle]="{width: containerWidth}" (window:resize)="changeContainerWidth()"
+        *ngIf="index === i"
+        [src]="slide"
+        @slideAnimation >
+    </ng-container>
+    <a class="prev" (click)='prevSlide()'></a>
+    <a class="next" (click)='nextSlide()'></a>
+    <ol>
+        <li *ngFor="let slide of slides; let i=index" class="dot" (click)='currentSlide(i)'></li>
+    </ol>
+</div>
