@@ -1,4 +1,5 @@
 .blocks {
     display: flex; 
     justify-content: flex-start;
+    max-width: 1900px;
 }

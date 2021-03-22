@@ -1,6 +1,8 @@
 .container {
     background-color: transparent;
+    max-width: 1900px;
     height: 700px;
+    max-height: 700px;
     display : flex;
     margin: 0 auto; 
     justify-content: center;
@@ -8,6 +10,7 @@
 }
 
 .container img {
+    max-width: 1900px;
     height : auto; 
     position: absolute;
     border: 2px solid black;
@@ -20,7 +23,8 @@
     position: absolute;
     border: 0;
     color: white;
-    margin-right: 50px;
+    top: calc(height/2); 
+    padding-right: 30px;
     font-weight: bold;
     font-size: 18px;
     transition: transform 1s; 
@@ -34,11 +38,14 @@
     border: 0;
     color: white;
     font-weight: bold;
-    margin-left: 50px;
+    top: calc(height/2);
+    padding-left:30px;
     font-size: 20px;
     transition: transform 1.5s; 
     left: 0;
 }
+
+
 
 .next:hover {
     transform: translate(30px);
@@ -52,7 +59,7 @@
     cursor: pointer;
     height: 10px;
     width: 10px;
-    margin: 0 2px;
+    bottom: 0;
     background-color: transparent;
     border: 3px solid black; 
     border-radius: 50%;
@@ -72,4 +79,54 @@
     position: absolute;
     display: inline-block;
 }
+ 
 
+@media only screen  and (min-width: 1980px) 
+{
+    .next{
+        content: url(https://img.icons8.com/ios/50/000000/chevron-right.png);
+        cursor: pointer;
+        position: absolute;
+        border: 0;
+        color: white;
+        top: calc(height/2); 
+        padding-right: 15%;
+        font-weight: bold;
+        font-size: 18px;
+        transition: transform 1s; 
+        right: 0;
+    }
+    
+    .prev{
+        content: url(https://img.icons8.com/ios/50/000000/chevron-left.png);
+        cursor: pointer;
+        position: absolute;
+        border: 0;
+        color: white;
+        font-weight: bold;
+        top: calc(height/2);
+        padding-left:15%; 
+        font-size: 20px;
+        transition: transform 1.5s; 
+        left: 0;
+    }
+
+    .dot{
+        cursor: pointer;
+        height: 10px;
+        width: 10px;
+        margin-right: 8px;
+        background-color: transparent;
+        border: 3px solid black; 
+        border-radius: 50%;
+        transition: height 0.8s,width 0.8s,border 0.8s; 
+        display: inline-block;
+    }
+    
+    .container ol{ 
+        padding-bottom: 9%;
+        cursor: pointer;
+        position: absolute;
+        display: inline-block;
+    }
+}

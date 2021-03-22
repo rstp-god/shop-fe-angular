@@ -1,5 +1,6 @@
 .footercontainer{
     height:300px;
+    max-width: 1900px;
     display : flex; 
     border : 1px solid black;
 }
