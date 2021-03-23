@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'app-header',
+  selector: 'header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
@@ -9,11 +9,31 @@ export class HeaderComponent implements OnInit {
 
   constructor() { }
 
-  containerWidth : string   = `${window.innerWidth-40}px`;
+  display1stmenu :string = 'none'; 
+  display2ndmenu :string = 'none'; 
 
-  changeContainerWidth() {
-    this.containerWidth =`${window.innerWidth-40}px`; 
+  toggle1stmenu() {
+    if (this.display1stmenu === 'none')
+    {
+      this.display1stmenu = 'flex';
+    } else {
+      this.display1stmenu  = 'none';
+    }
+    
   }
+
+  toggle2ndmenu() {
+    if (this.display2ndmenu === 'none')
+    {
+      this.display2ndmenu = 'flex';
+    } else {
+      this.display2ndmenu  = 'none';
+    }
+    
+  }
+
+
+
 
   ngOnInit(): void {
   }

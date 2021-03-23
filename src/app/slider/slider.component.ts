@@ -3,17 +3,17 @@ import { trigger, transition, style, animate,state,AnimationEvent,useAnimation} 
 
 
 @Component({
-  selector: 'app-slider',
+  selector: 'slider',
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.css'],
   animations: [trigger ("slideAnimation" , 
     [
       transition('void => *', [
         style({ opacity: 0 }),
-        animate('800ms', style({ opacity: 1 }))
+        animate('1000ms', style({ opacity: 1 }))
       ]),
       transition('* => void', [
-        animate('800ms', style({ opacity: 0 }))
+        animate('1000ms', style({ opacity: 0 }))
       ])
     ])
   ] 
@@ -22,19 +22,10 @@ export class SliderComponent implements OnInit {
 
   constructor() { }
 
-  containerWidth : string   = `${window.innerWidth-40}px`;
-  
-  changeContainerWidth() {
-    this.containerWidth =`${window.innerWidth-40}px`; 
-  }
 
   public i:number =0; 
   public slides : string[]= ['assets/img/1.jpg','assets/img/2.jpg','assets/img/3.jpg']
   
-
-  play (){
-    setTimeout( () => {this.nextSlide(); this.play()},5000);
-  } 
 
   showSlide() {
     return this.slides[this.i]; 
@@ -54,7 +45,6 @@ currentSlide(i:number){
 }
 
   ngOnInit(): void {
-   this.play(); 
   }
 
 }
