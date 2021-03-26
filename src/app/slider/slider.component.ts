@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { trigger, transition, style, animate,state,AnimationEvent,useAnimation} from "@angular/animations";
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { trigger, transition, style, animate} from "@angular/animations";
+
 
 
 @Component({
@@ -8,23 +9,21 @@ import { trigger, transition, style, animate,state,AnimationEvent,useAnimation} 
   styleUrls: ['./slider.component.css'],
   animations: [trigger ("slideAnimation" , 
     [
-      transition('void => *', [
+      transition(':enter', [
         style({ opacity: 0 }),
         animate('1000ms', style({ opacity: 1 }))
       ]),
-      transition('* => void', [
-        animate('1000ms', style({ opacity: 0 }))
+      transition(':leave', [
+        animate('1000ms', style({ opacity: 0 , display : 'none  ' }))
       ])
     ])
   ] 
 })
 export class SliderComponent implements OnInit {
 
-  constructor() { }
-
 
   public i:number =0; 
-  public slides : string[]= ['assets/img/1.jpg','assets/img/2.jpg','assets/img/3.jpg']
+  public slides : string[]= ['assets/img/1.jpg','assets/img/2.jpg','assets/img/3.jpg']; 
   
 
   showSlide() {

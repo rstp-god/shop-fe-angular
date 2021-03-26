@@ -1,9 +1,11 @@
-<div class="container"> 
-    <ng-container *ngFor="let slide of slides; let index=index">
+<div #slidercontainer class="container">
+   <ng-container *ngFor="let slide of slides; let index=index" class="container">
         <img  
+        [width]="slidercontainer.offsetWidth"
         *ngIf="index === i"
         [src]="slide"
-        @slideAnimation >
+        @slideAnimation 
+        >
     </ng-container>
     <a class="prev" (click)='prevSlide()'></a>
     <a class="next" (click)='nextSlide()'></a>
