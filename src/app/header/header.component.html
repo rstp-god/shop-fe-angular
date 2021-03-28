@@ -1,31 +1,52 @@
 <div class="container">
     <div class="logo">
-            <a href=""><img src="https://img.icons8.com/carbon-copy/100/000000/shopping-basket-2.png/"> </a>
+        <a href=""><img src="https://img.icons8.com/carbon-copy/100/000000/shopping-basket-2.png/"> </a>
         <a href="">Shopping!</a>
     </div>
     <div class="menubuttons">
         <div class="dropdowncontainer">
-            <button class='dropdownbutton list' (click)='toggle1stmenu()' >Main menu</button>
-                <div style="display : {{display1stmenu}}" class="dropdownmenu">
-                    <a href="">http 1</a>
-                    <a href="">http 2</a>
-                    <a href="">http 3</a>
-                    <a href="">http 4</a>
-                </div>
+            <button class='dropdownbutton list' (click)='toggle1stmenu()'>Main menu</button>
+            <div style="display : {{display1stmenu}}" class="dropdownmenu">
+                <a href="">http 1</a>
+                <a href="">http 2</a>
+                <a href="">http 3</a>
+                <a href="">http 4</a>
+            </div>
         </div>
         <div class="dropdowncontainer">
-        <button class='dropdownbutton list' (click)='toggle2ndmenu()'>Products</button>
+            <button class='dropdownbutton list' (click)='toggle2ndmenu()'>Products</button>
             <div style="display : {{display2ndmenu}} " class="dropdownmenu">
-                 <a href="">http 1</a>
-                 <a href="">http 2</a>
-                 <a href="">http 3</a>
-                 <a href="">http 4</a>
+                <a href="">http 1</a>
+                <a href="">http 2</a>
+                <a href="">http 3</a>
+                <a href="">http 4</a>
             </div>
         </div>
         <button class='menubutton'>About</button>
         <button class='menubutton'>Contact</button>
     </div>
     <div class="login">
-        <a href="">Sing in</a><p>/</p><a href="">Sing up</a>
+        <a href="">Sing in</a>
+        <p>/</p><a href="">Sing up</a>
+    </div>
+</div>
+<div class="mobilecontainer">
+    <div class="mobilelogo">
+        <a href=""><img src="https://img.icons8.com/carbon-copy/100/000000/shopping-basket-2.png/"> </a>
+        <a href="">Shopping!</a>
+    </div>
+    <div class="mobiledropdownbutton">
+        <button class="mobilebutton" (click)='togglemobilemenu()'><img
+                src="https://img.icons8.com/ios/100/000000/chevron-down.png" /></button>
+    </div>
+</div>
+<div class="mobiledropmenu" style="display: {{displaymobilemenu}}">
+    <a href="">http 1</a>
+    <a href="">http 2</a>
+    <a href="">http 3</a>
+    <a href="">http 4</a>
+    <div class="mobilelogin">
+        <a href="">Sing in</a>
+        <a href="">Sing up</a>
     </div>
 </div>

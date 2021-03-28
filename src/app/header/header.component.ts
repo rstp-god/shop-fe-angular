@@ -11,6 +11,7 @@ export class HeaderComponent implements OnInit {
 
   display1stmenu :string = 'none'; 
   display2ndmenu :string = 'none'; 
+  displaymobilemenu : string ='none'; 
 
   toggle1stmenu() {
     if (this.display1stmenu === 'none')
@@ -28,6 +29,16 @@ export class HeaderComponent implements OnInit {
       this.display2ndmenu = 'flex';
     } else {
       this.display2ndmenu  = 'none';
+    }
+    
+  }
+
+  togglemobilemenu() {
+    if (this.displaymobilemenu === 'none')
+    {
+      this.displaymobilemenu = 'flex';
+    } else {
+      this.displaymobilemenu  = 'none';
     }
     
   }

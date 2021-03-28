@@ -9,6 +9,10 @@
   align-items: center;
 }
 
+.mobilecontainer {
+  display: none;
+}
+
 .logo {
   width: 10%;
   height: 60px;
@@ -164,8 +168,6 @@
   color: white;
   transform: translateY(-7px);
 }
-
-
 
 @media only screen and (max-width: 1610px) {
 
@@ -433,5 +435,118 @@
   .logo a:hover {
     color: #929292;
   }
+
+}
+
+
+@media only screen and (max-width : 860px) {
+
+  .container {
+    display: none;
+  }
+  
+.mobilecontainer {
+  height: 60px;
+  background-color: transparent;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-content: space-between;
+  align-items: center;
+}
+
+.mobiledropmenu { 
+  position: absolute;
+  left : 5% ;
+  width: 90%; 
+  height: 225px;
+  display:flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  background: linear-gradient(#ffffff, #d3d3d3dc);
+  border-radius: 0 0 45px 45px; 
+  line-height: 45px;
+  font-size: 11px;
+  text-transform: uppercase;
+  text-align: center;
+  text-size-adjust: 100%;
+  font-weight: 600;
+}
+
+.mobiledropmenu a:hover{ 
+  background: linear-gradient(#d3d3d3dc, #2e2d2ddc);
+  border-radius: 45px; 
+}
+
+.mobilelogin {
+  display: flex; 
+  width: 100%; 
+  justify-content: center;
+}
+
+.mobilelogin a {
+  display: flex; 
+  width: 50%; 
+  justify-content: center;
+}
+
+.mobiledropdownbutton {
+  position: relative;
+  width: 50%;
+  height: 60px;
+  display: flex;
+  background: transparent;
+  justify-content: flex-end;
+  align-items: center;
+  align-content: space-around;
+}
+
+
+.mobilebutton {
+  padding-bottom: 4%;
+  border: 0;
+  height: 60px;
+  display: flex;
+  background: transparent;
+  justify-content: flex-end;
+  align-items: center;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobilebutton img {
+  zoom: 55%;
+}
+
+.mobilelogo {
+  width: 50%;
+  height: 60px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: space-around;
+}
+
+.mobilelogo img {
+  width: 62px;
+  height: 62px;
+  padding-top: auto;
+}
+
+.mobilelogo a {
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0 auto;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-size-adjust: 100%;
+}
+
+.mobilelogo a:hover {
+  color: #929292;
+}
 
 }
