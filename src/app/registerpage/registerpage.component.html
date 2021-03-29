@@ -1,0 +1,25 @@
+<div class="wrapper">
+    <div class="logincontainer">
+       <form action=''>
+              <h4>First Name :</h4> 
+              <input type="text">
+              <h4>Last Name :</h4> 
+              <input type="text">
+              <h4>Phone :</h4> 
+              <input type="text">
+              <h4>Email :</h4> 
+              <input type="text">
+              <h4>Sex :</h4> 
+              <div>
+              <input type="radio" name='sex' value="ture" id='0'><label>Male</label>
+              <input type="radio" name='sex' value="false"id='1'><label>Female</label>
+              </div>
+              <h4>Bithday date :</h4> 
+              <input type="date" value="{{ today | date:'YYYY-MM-dd'}}"> 
+              <h4>Password :</h4> 
+              <input type="password"> 
+              <button>Sing up</button>
+       </form>
+       <h5>Already have an account? <a href="/singin">Log in!</a></h5>
+    </div>
+  </div>
