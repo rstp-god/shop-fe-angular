@@ -14,11 +14,13 @@ import { SinginComponent } from './singin/singin.component';
 import { RouterModule } from '@angular/router';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { RegisterpageComponent } from './registerpage/registerpage.component';
+import { ClientpageComponent } from './clientpage/clientpage.component';
 
 const appRoutes = [
   {path:'', component:MainpageComponent },
   {path:'singin', component:SinginComponent }, 
-  {path:'register', component:RegisterpageComponent}
+  {path:'register', component:RegisterpageComponent}, 
+  {path:'clientpage', component:ClientpageComponent}
 ]
 
 @NgModule({
@@ -30,7 +32,8 @@ const appRoutes = [
     FooterComponent,
     SinginComponent,
     MainpageComponent,
-    RegisterpageComponent
+    RegisterpageComponent,
+    ClientpageComponent
   ],
   imports: [
     BrowserModule,
