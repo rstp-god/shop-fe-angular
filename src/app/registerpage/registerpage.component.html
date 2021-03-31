@@ -1,23 +1,23 @@
 <div class="wrapper">
     <div class="logincontainer">
-       <form action=''>
+       <form action='' (submit)="postData()">
               <h4>First Name :</h4> 
-              <input type="text">
+              <input type="text" name='firstName' value='' [(ngModel)]="firstName">
               <h4>Last Name :</h4> 
-              <input type="text">
+              <input type="text" name='lastName' value='' [(ngModel)]="lastName">
               <h4>Phone :</h4> 
-              <input type="text">
+              <input type="text" name='phone' value='' [(ngModel)]="phone">
               <h4>Email :</h4> 
-              <input type="text">
+              <input type="text" name='email' value='' [(ngModel)]="email">
               <h4>Sex :</h4> 
               <div>
-              <input type="radio" name='sex' value="ture" id='0'><label>Male</label>
-              <input type="radio" name='sex' value="false"id='1'><label>Female</label>
+              <input type="radio" name='sex' value=1  [(ngModel)]="sex"><label>Male</label>
+              <input type="radio" name='sex' value=0 [(ngModel)]="sex"><label>Female</label>
               </div>
               <h4>Bithday date :</h4> 
-              <input type="date" value="{{ today | date:'YYYY-MM-dd'}}"> 
+              <input type="date" name='bithDate' value="{{ today | date:'YYYY-MM-dd'}}" [(ngModel)]="bithDate"> 
               <h4>Password :</h4> 
-              <input type="password"> 
+              <input type="password" name='password' value='' [(ngModel)]="password"> 
               <button>Sing up</button>
        </form>
        <h5>Already have an account? <a href="/singin">Log in!</a></h5>

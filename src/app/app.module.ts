@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -11,17 +12,12 @@ import { SliderComponent } from './slider/slider.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './footer/footer.component';
 import { SinginComponent } from './singin/singin.component';
-import { RouterModule } from '@angular/router';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { RegisterpageComponent } from './registerpage/registerpage.component';
 import { ClientpageComponent } from './clientpage/clientpage.component';
+import { ProductlistComponent } from './productlist/productlist.component';
+import { ProductshowcaseComponent } from './productshowcase/productshowcase.component';
 
-const appRoutes = [
-  {path:'', component:MainpageComponent },
-  {path:'singin', component:SinginComponent }, 
-  {path:'register', component:RegisterpageComponent}, 
-  {path:'clientpage', component:ClientpageComponent}
-]
 
 @NgModule({
   declarations: [
@@ -33,14 +29,16 @@ const appRoutes = [
     SinginComponent,
     MainpageComponent,
     RegisterpageComponent,
-    ClientpageComponent
+    ClientpageComponent,
+    ProductlistComponent,
+    ProductshowcaseComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
     FormsModule,
     BrowserAnimationsModule, 
-    RouterModule.forRoot(appRoutes)
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

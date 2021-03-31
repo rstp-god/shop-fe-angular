@@ -1,0 +1,18 @@
+.grid {
+    margin-top: 2%; 
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    grid-gap: 2vw
+}
+
+.grid div {
+    padding-left:4%; 
+    border: 1px solid black;
+    border-radius: 50px;
+    -webkit-box-shadow: -4px 14px 24px -4px rgba(15, 15, 15, 0.719);
+    -moz-box-shadow: -4px 14px 24px -4px rgba(15, 15, 15, 0.719);
+    box-shadow: -4px 14px 24px -4px rgba(15, 15, 15, 0.719);
+}
+
+.grid div button {
+}
