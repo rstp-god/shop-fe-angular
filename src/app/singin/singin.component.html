@@ -1,10 +1,10 @@
 <div class="wrapper">
   <div class="logincontainer">
-     <form action=''>
-            <h4>Username :</h4> 
-            <input type="text">
+     <form action='' (submit)='login()'>
+            <h4>Phone :</h4> 
+            <input type="text" name='phone' [(ngModel)] ='phone'>
             <h4>Password :</h4> 
-            <input type="password">
+            <input type="password" name='password' [(ngModel)] ='password'>
             <button>Sing in</button>
      </form>
      <h5>New in our shop? <a href="/register">Create an accout!</a></h5>

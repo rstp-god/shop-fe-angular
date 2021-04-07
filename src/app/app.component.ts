@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { transition,trigger,animate,style } from '@angular/animations';
 
 @Component({
@@ -14,5 +14,4 @@ import { transition,trigger,animate,style } from '@angular/animations';
   ])
 ] 
 })
-export class AppComponent {
-}
+export class AppComponent{}

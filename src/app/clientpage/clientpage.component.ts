@@ -1,19 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HeaderComponent } from '../header/header.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-clientpage',
   templateUrl: './clientpage.component.html',
-  styleUrls: ['./clientpage.component.css']
+  styleUrls: ['./clientpage.component.css'], 
+  providers: [HeaderComponent]
 })
 export class ClientpageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http :HttpClient, private header : HeaderComponent) { }
 
-  name : string = 'Ivan'; 
-  surname : string = 'Petrov'; 
-  email : string = 'ivan@emali.hg'; 
-  purchasesSum: number =5020; 
-  activated:boolean=false; 
+  public name!: string; 
+  public surname! : string; 
+  public email! : string; 
+  public purchasesSum!: number; 
+  public activated!:boolean; 
+  private id! :number; 
 
   getUserAvatar() {
     return '///';
@@ -36,6 +41,18 @@ export class ClientpageComponent implements OnInit {
     return 'Congratulations you rached max discount! 10%! yoohooo'
   }
 
+
+  async fillUserInfo () {
+    await this.http.get(`https://ilia.isupov.bhuser.ru/shop-be/users/${this.id}`).subscribe((res:any) => {
+      this.name = res.firstName; 
+      this.surname = res.lastName; 
+      this.email = res.email; 
+      this.purchasesSum = res.purchasesSum; 
+      this.activated = res.activate;
+      this.header.setNameFromPage(res.firstName); 
+    }); 
+  }
+
   isActivated() :string {
     if(this.activated)  {
       return 'Yes! You activate account!'; 
@@ -43,7 +60,29 @@ export class ClientpageComponent implements OnInit {
     return 'Nope, check your Email!'; 
   }
 
-  ngOnInit(): void {
+
+  // custom func to slice jwt key from cookies 
+  getJWTkey () :string {
+    let i = document.cookie.indexOf('jwt'); // find index 
+    let accKey = document.cookie.slice(i); // slice everythink that before jwt = 
+    accKey= accKey.slice(4); // slice jwt 
+    i = accKey.indexOf(';'); // find ; space for next cookie 
+    if ( i === -1  ) { // if jwt key is alone cookie or last in cookie list 
+      return accKey = 'Bearer ' + accKey; 
+    }
+    accKey = 'Bearer ' + accKey.slice(0,i); // slice everyrhink after ; 
+    return accKey; 
   }
 
+
+  ngOnInit(): void {
+     const accKey = this.getJWTkey(); 
+    this.http.get('https://ilia.isupov.bhuser.ru/shop-be/auth/info',
+      {
+        headers: new HttpHeaders({
+          Authorization: accKey
+        })
+      })
+      .subscribe((res:any) => {this.id = res.id ; this.fillUserInfo()}); 
+  }
 }

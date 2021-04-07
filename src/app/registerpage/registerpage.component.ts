@@ -1,15 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
-interface Client {
-  firstName: string,
-  lastName: string,
-  phone: string,
-  email: string,
-  sex: boolean,
-  bithDate: Date,
-  password: string,
-}
 
 @Component({
   selector: 'app-registerpage',
@@ -18,31 +10,26 @@ interface Client {
 })
 export class RegisterpageComponent implements OnInit {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private router : Router) { }
 
-  firstName!: string;
-  lastName!: string;
-  phone!: string;
-  email!: string;
-  sex!: any;
-  bithDate!: Date ;
-  password!: string;
+  public err : string = 'none'; 
+
+  public firstName!: string;
+  public lastName!: string;
+  public phone!: string;
+  public email!: string;
+  public sex!: any;
+  public bithDate!: Date ;
+  public password!: string;
 
   public today: number = Date.now();
   
-
-  setName(event: Event) {
-    console.log(event);
-  }
-
   postData() {
     
-    if(this.sex == 1){
-      this.sex= true; 
-    } else {
-      this.sex=false; 
-    }
-
+    if ( this.validationData() && this.isPhoneRegister()) {
+      
+      this.err = 'none'; 
+      
     const body = {
       firstName: this.firstName,
       lastName: this.lastName,
@@ -52,12 +39,46 @@ export class RegisterpageComponent implements OnInit {
       bithDate: this.bithDate,
       password: this.password,
     }
+    this.http.post('https://ilia.isupov.bhuser.ru/shop-be/users', body).subscribe(res => console.log(res)); 
+    this.router.navigate(['/singin'])
+    return 
+    } 
 
-    console.log( body); 
-
-    this.http.put('http://ilia.isupov.bhuser.ru//shop-be/users', body).subscribe(res => console.log(res)); 
+    this.err = 'block'; 
   }
 
+  validationData() : boolean {
+
+    if (this.firstName === undefined || this.lastName === undefined || this.phone === undefined || this.email === undefined || this.sex === undefined || this.bithDate === undefined || this.password === undefined){ 
+      return false; 
+    }
+
+    if(this.sex == 1){
+      this.sex= true; 
+    } else {
+      this.sex=false; 
+    }
+
+    if(+this.phone === NaN && this.phone.length < 11){
+      return false; 
+    }
+    
+    if (this.phone.length === 12 && this.phone[0] === '+') {
+       this.phone = this.phone.substr(1); 
+    }
+
+    if (this.email.indexOf('@') == -1) {
+      return false; 
+    }
+
+    return true ;
+  }
+
+  async isPhoneRegister() : Promise<boolean>{
+    let flag : boolean = true ;  
+    await this.http.get(`https://ilia.isupov.bhuser.ru/shop-be/users?phone=${this.phone}`).toPromise().then(() => {flag = false}).catch(() => {flag = true}); 
+    return flag; 
+  }
 
   ngOnInit(): void {
   }
