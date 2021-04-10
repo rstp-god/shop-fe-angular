@@ -13,7 +13,7 @@ export class ProductshowcaseComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,private http:HttpClient) { }
 
-  productInfo!: Product; 
+  public productInfo!: Product; 
 
   getProduct(id: number)  {
     this.http.get<Product>(`http://ilia.isupov.bhuser.ru/shop-be/products/${id}`)

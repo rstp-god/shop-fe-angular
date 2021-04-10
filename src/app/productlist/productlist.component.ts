@@ -20,7 +20,7 @@ export class ProductlistComponent implements OnInit {
 
   constructor(private http:HttpClient) { }
 
-  products : Product[] = []; 
+  public products : Product[] = []; 
 
 
   getProducts() {

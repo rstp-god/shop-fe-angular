@@ -15,4 +15,28 @@
 }
 
 .grid div button {
+    outline: none;
+    margin-bottom: 2%;
+  display: inline-block;
+  width: 95%;
+  height: 50px;
+  line-height: 45px;
+  border-radius: 45px;
+  font-size: 11px;
+  text-transform: uppercase;
+  text-align: center;
+  text-size-adjust: 100%;
+  letter-spacing: 3px;
+  font-weight: 600;
+  color: black;
+  background: white;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+  transition: .3s;
+}
+
+.grid div button:hover{
+    background: #929292;
+    box-shadow: 0 15px 20px #929292;
+    color: white;
+    transform: translateY(-7px);
 }

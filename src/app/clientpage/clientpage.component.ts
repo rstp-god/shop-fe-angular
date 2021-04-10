@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HeaderComponent } from '../header/header.component';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-clientpage',
@@ -18,10 +18,14 @@ export class ClientpageComponent implements OnInit {
   public email! : string; 
   public purchasesSum!: number; 
   public activated!:boolean; 
+  public sex!:boolean; 
   private id! :number; 
 
   getUserAvatar() {
-    return '///';
+    if (!this.sex) {
+      return 'assets/img/female  avatar.jpg'
+    }
+    return 'assets/img/male  avatar.jpg'
   }
 
   discountCalc() : string{
@@ -49,6 +53,7 @@ export class ClientpageComponent implements OnInit {
       this.email = res.email; 
       this.purchasesSum = res.purchasesSum; 
       this.activated = res.activate;
+      this.sex =res.sex; 
       this.header.setNameFromPage(res.firstName); 
     }); 
   }
