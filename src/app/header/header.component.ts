@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'header',
@@ -8,7 +9,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private router:Router ) { }
 
   public display1stmenu :string = 'none'; 
   public display2ndmenu :string = 'none'; 
@@ -40,6 +41,14 @@ export class HeaderComponent implements OnInit {
       this.displayclient = 'flex';
       this.name = res.firstName; 
     }); 
+  }
+
+  contact() {
+    this.router.navigate(['/contact'])
+  }
+
+  about() {
+    this.router.navigate(['/about'])
   }
 
   setNameFromPage(name : string) {
