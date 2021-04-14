@@ -59,6 +59,7 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     document.cookie = 'jwt = undefiend'; 
+    this.router.navigate(['']);
   }
 
   toggle1stmenu() {

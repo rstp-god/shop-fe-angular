@@ -16,7 +16,7 @@ export class ProductshowcaseComponent implements OnInit {
   public productInfo!: Product; 
 
   getProduct(id: number)  {
-    this.http.get<Product>(`http://ilia.isupov.bhuser.ru/shop-be/products/${id}`)
+    this.http.get<Product>(`https://ilia.isupov.bhuser.ru/shop-be/products/${id}`)
     .subscribe(res => {
       this.productInfo = res; 
     }

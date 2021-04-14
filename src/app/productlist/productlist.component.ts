@@ -24,7 +24,7 @@ export class ProductlistComponent implements OnInit {
 
 
   getProducts() {
-    this.http.get<Product[]>('http://ilia.isupov.bhuser.ru/shop-be/products')
+    this.http.get<Product[]>('https://ilia.isupov.bhuser.ru/shop-be/products')
     .subscribe(res => {
       this.products = res;
       console.log(this.products)

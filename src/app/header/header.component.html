@@ -16,7 +16,7 @@
         <div class="dropdowncontainer">
             <button class='dropdownbutton list' (click)='toggle2ndmenu()'>Products</button>
             <div style="display : {{display2ndmenu}} " class="dropdownmenu">
-                <a href="/products">All our products!</a>
+                <a routerLink="./products">All our products!</a>
                 <a href="">http 2</a>
                 <a href="">http 3</a>
                 <a href="">http 4</a>
@@ -26,13 +26,13 @@
         <button (click)='contact()' class='menubutton'>Contact</button>
     </div>
     <div class="login" style="display : {{displayclientpage}}">
-        <a href="/singin">Sing in</a>
-        <p>/</p><a href="/register">Sing up</a>
+        <a routerLink="./singin">Sing in</a>
+        <p>/</p><a routerLink="./register">Sing up</a>
     </div>
     <div class="login" style="display : {{displayclient}}">
-        <a href="/clientpage">{{name}}</a>
+        <a routerLink="./clientpage">{{name}}</a>
         <p>/</p>
-        <a href="/" (click)='logout()'>Log Out</a>
+        <a routerLink='/' (click)='logout()'>Log Out</a>
     </div>
 </div>
 <div class="mobilecontainer">
@@ -46,17 +46,17 @@
     </div>
 </div>
 <div class="mobiledropmenu" style="display: {{displaymobilemenu}}">
-  <a href="/products">All our products!</a>
+  <a routerLink="./products">All our products!</a>
   <a href="">http 2</a>
   <a href="">http 3</a>
   <a href="">http 4</a>
   <div class="mobilelogin">
-    <a href="/singin">Sing in</a>
-    <a href="/register">Sing up</a>
+    <a routerLink="/singin">Sing in</a>
+    <a routerLink="/register">Sing up</a>
     <div class="mobilelogin" style="display : {{displayclient}}">
-      <a href="/clientpage">{{name}}</a>
+      <a routerLink="/clientpage">{{name}}</a>
       <p>/</p>
-      <a href="/" (click)='logout()'>Log Out</a>
+      <a routerLink='/' (click)='logout()'>Log Out</a>
     </div>
   </div>
 </div>
