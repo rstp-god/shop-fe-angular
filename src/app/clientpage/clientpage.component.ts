@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HeaderComponent } from '../header/header.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { HeaderComponent } from '../header/header.component';
 })
 export class ClientpageComponent implements OnInit {
 
-  constructor(private http :HttpClient, private header : HeaderComponent) { }
+  constructor(private http :HttpClient, private header : HeaderComponent, private router : Router) { }
 
   public name!: string; 
   public surname! : string; 
@@ -46,6 +47,11 @@ export class ClientpageComponent implements OnInit {
   }
 
 
+  logout() {
+    this.header.logout(); 
+    this.router.navigate(['/']);
+  }
+
   async fillUserInfo () {
     await this.http.get(`https://ilia.isupov.bhuser.ru/shop-be/users/${this.id}`).subscribe((res:any) => {
       this.name = res.firstName; 
@@ -55,6 +61,7 @@ export class ClientpageComponent implements OnInit {
       this.activated = res.activate;
       this.sex =res.sex; 
       this.header.setNameFromPage(res.firstName); 
+      this.header.ngOnInit(); 
     }); 
   }
 
@@ -88,6 +95,6 @@ export class ClientpageComponent implements OnInit {
           Authorization: accKey
         })
       })
-      .subscribe((res:any) => {this.id = res.id ; this.fillUserInfo()}); 
+      .subscribe((res:any) => {this.id = res.id ; this.fillUserInfo();}); 
   }
 }

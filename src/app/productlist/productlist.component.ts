@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -16,23 +16,29 @@ export interface Product {
   templateUrl: './productlist.component.html',
   styleUrls: ['./productlist.component.css']
 })
-export class ProductlistComponent implements OnInit {
+export class ProductlistComponent implements OnInit, OnChanges {
 
   constructor(private http:HttpClient) { }
 
-  public products : Product[] = []; 
+  public products : any; 
+  public showloading :boolean = true; 
 
+  ngOnChanges() {
+    console.log('....'); 
+  }
 
-  getProducts() {
-    this.http.get<Product[]>('https://ilia.isupov.bhuser.ru/shop-be/products')
-    .subscribe(res => {
-      this.products = res;
-      console.log(this.products)
+  async getProducts() {
+    await this.http.get('https://ilia.isupov.bhuser.ru/shop-be/products')
+    .subscribe(res=> {
+      console.log('2');
+      this.showloading = false; 
+      this.products = res; 
     }
     )
   }
 
   ngOnInit(): void {
-  this.getProducts();
+    console.log('1');
+    this.getProducts();
   }
 }

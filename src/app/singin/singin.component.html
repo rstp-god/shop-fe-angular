@@ -1,11 +1,13 @@
 <div class="wrapper">
-  <div class="logincontainer">
+  <div *ngIf="loading" class='loading'></div>
+  <div class="logincontainer" *ngIf='logging'>
      <form action='' (submit)='login()'>
             <h4>Phone :</h4> 
             <input type="text" name='phone' [(ngModel)] ='phone'>
             <h4>Password :</h4> 
             <input type="password" name='password' [(ngModel)] ='password'>
             <button>Sing in</button>
+            <h5 style='color : red'*ngIf='err'>Ooops something went wrong! <br/> Please try later or check your input!</h5>
      </form>
      <h5>New in our shop? <a routerLink="/register">Create an accout!</a></h5>
   </div>

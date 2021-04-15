@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   public displayclientpage: string = 'flex';
   public displayclient : string = 'none';
   public name!:string ; 
+  public flag : boolean = true; 
 
   private id!:number; 
 
@@ -35,8 +36,18 @@ export class HeaderComponent implements OnInit {
     return accKey; 
   }
 
+  async getInfo(accKey : string) { 
+    await this.http.get('https://ilia.isupov.bhuser.ru/shop-be/auth/info',
+    {
+      headers: new HttpHeaders({
+        Authorization: accKey
+      })
+    })
+    .subscribe((res:any) => {this.id = res.id ; this.setName(); }); 
+  }
+
   setName() {
-    this.http.get(`https://ilia.isupov.bhuser.ru/shop-be/users/${this.id}`).subscribe((res:any) => {
+      this.http.get(`https://ilia.isupov.bhuser.ru/shop-be/users/${this.id}`).subscribe((res:any) => {
       this.displayclientpage =  'none'; 
       this.displayclient = 'flex';
       this.name = res.firstName; 
@@ -51,36 +62,27 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/about'])
   }
 
+  logout() {
+    document.cookie = 'jwt = undefiend'; 
+    this.router.navigate(['/']);
+    this.flag = true; 
+    location.reload(); 
+  }
+
+  mainmenu() {
+    this.router.navigate(['/']);
+  }
+
+  products() {
+    this.router.navigate(['/products']);
+  }
+
   setNameFromPage(name : string) {
     this.displayclientpage = 'none';
     this.displayclient = 'flex';
     this.name = name; 
+    this.flag = false; 
     }
-
-  logout() {
-    document.cookie = 'jwt = undefiend'; 
-    this.router.navigate(['']);
-  }
-
-  toggle1stmenu() {
-    if (this.display1stmenu === 'none')
-    {
-      this.display1stmenu = 'flex';
-    } else {
-      this.display1stmenu  = 'none';
-    }
-    
-  }
-
-  toggle2ndmenu() {
-    if (this.display2ndmenu === 'none')
-    {
-      this.display2ndmenu = 'flex';
-    } else {
-      this.display2ndmenu  = 'none';
-    }
-    
-  }
 
   togglemobilemenu() {
     if (this.displaymobilemenu === 'none')
@@ -94,15 +96,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     const accKey = this.getJWTkey(); 
-    if (accKey !== 'Bearer undefiend' && accKey !== 'none'){
-      this.http.get('https://ilia.isupov.bhuser.ru/shop-be/auth/info',
-      {
-        headers: new HttpHeaders({
-          Authorization: accKey
-        })
-      })
-      .subscribe((res:any) => {this.id = res.id ;  this.setName();}); 
-    }
+    if (accKey !== 'Bearer undefiend' && accKey !== 'none' && this.flag){
+      this.getInfo(accKey) ;
+    } 
   }
-
 }

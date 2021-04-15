@@ -82,3 +82,14 @@
     text-shadow: rgba(15, 15, 15, 0.719);
     color:black; 
 }
+
+.loading {
+    content: url(/assets/gifs/spinner.gif);
+    margin-top: 5%!important; 
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 50px;
+    -webkit-box-shadow: -4px 14px 24px -4px rgba(15, 15, 15, 0.719);
+    -moz-box-shadow: -4px 14px 24px -4px rgba(15, 15, 15, 0.719);
+    box-shadow: -4px 14px 24px -4px rgba(15, 15, 15, 0.719);
+}

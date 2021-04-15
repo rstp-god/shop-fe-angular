@@ -456,7 +456,7 @@
 }
 
 .mobiledropmenu { 
-  position: absolute;
+  position: absolute; 
   left : 5% ;
   width: 90%; 
   height: 225px;
