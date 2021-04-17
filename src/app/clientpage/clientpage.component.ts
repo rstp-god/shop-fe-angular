@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 
 @Component({
-  selector: 'app-clientpage',
+  selector: 'clientpage',
   templateUrl: './clientpage.component.html',
   styleUrls: ['./clientpage.component.css'], 
   providers: [HeaderComponent]

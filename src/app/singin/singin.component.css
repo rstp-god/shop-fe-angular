@@ -84,7 +84,7 @@
 }
 
 .loading {
-    content: url(/assets/gifs/spinner.gif);
+    content: url(/shop-fe/assets/gifs/spinner.gif);
     margin-top: 5%!important; 
     margin: 0 auto;
     border: 1px solid black;

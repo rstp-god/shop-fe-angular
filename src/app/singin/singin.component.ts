@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './singin.component.html',
   styleUrls: ['./singin.component.css']
 })
-export class SinginComponent implements OnInit {
+export class SinginComponent {
 
   constructor(private http: HttpClient , private router : Router) {}
 
@@ -40,9 +40,4 @@ export class SinginComponent implements OnInit {
       this.logging = true; 
     }); 
   }
-
-
-  ngOnInit(): void {
-  }
-
 }

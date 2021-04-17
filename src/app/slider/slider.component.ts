@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { trigger, transition, style, animate} from "@angular/animations";
 
 
@@ -19,7 +19,7 @@ import { trigger, transition, style, animate} from "@angular/animations";
     ])
   ] 
 })
-export class SliderComponent implements OnInit {
+export class SliderComponent {
 
 
   public i:number =0; 
@@ -43,7 +43,5 @@ currentSlide(i:number){
   return this.slides[this.i];
 }
 
-  ngOnInit(): void {
-  }
 
 }
