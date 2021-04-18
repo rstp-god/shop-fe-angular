@@ -45,7 +45,7 @@
 .login {
   width: 10%;
   height: 60px;
-  right: 0;
+  right: 0%;
   display: flex;
   justify-content: flex-end !important;
   align-items: center;
@@ -54,15 +54,12 @@
   text-size-adjust: 100%;
 }
 
-.login img {
-  padding-top: 22%;
-  padding-right: 3px;
-}
 
 .login a {
   color: black;
   text-decoration: none;
   font-weight: 600;
+  
 }
 
 .login p {
