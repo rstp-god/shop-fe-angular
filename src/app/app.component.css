@@ -23,6 +23,44 @@ a:hover {
 }
 
 .footer {
+    background: linear-gradient(#ffffff, rgb(78, 77, 77));
+    border-radius: 0 0 45px 45px;
+    margin-top:5%;
     box-sizing: border-box;
     height: 300px;
+    display: flex; 
+    justify-content: space-around; 
+}
+
+.sponsors {
+    letter-spacing: 3px;
+    font-weight: 600;
+}
+
+.fans {
+    letter-spacing: 3px;
+    font-weight: 600;
+}
+
+.help {
+    letter-spacing: 3px;
+    font-weight: 600;
+}
+
+.soc {
+    letter-spacing: 3px;
+    font-weight: 600;
+}
+
+.soc img {
+    width: 35px ; 
+    height: 35px;
+}
+
+li,ol { 
+    color:white;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: black;
+    list-style-type: none; 
+    letter-spacing: 1px;
 }

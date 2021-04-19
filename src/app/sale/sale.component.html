@@ -1,0 +1,8 @@
+<div *ngIf='showloading' class='loading'></div>
+<div class='container'>
+    <div *ngFor='let product of saleproducts' class='item'> 
+        <a routerLink='./products/{{product.id}}'><h4>{{product.productName}}</h4></a>
+        <h4>Sale : {{salepercent}}%</h4>
+        <h4>Only today price : {{product.price - product.price*salepercent/100}}</h4>
+    </div>
+</div>

@@ -1,4 +1,5 @@
 .container{
+    margin-top : 2%; 
     box-sizing: border-box; 
     padding: 2%; 
     border: 1px solid black;
@@ -7,3 +8,17 @@
     -moz-box-shadow: -4px 14px 24px -4px rgba(15, 15, 15, 0.719);
     box-shadow: -4px 14px 24px -4px rgba(15, 15, 15, 0.719);
 }
+
+
+.sales{
+    margin-top : 2%; 
+    box-sizing: border-box; 
+    padding: 2%; 
+    border: 1px solid black;
+    border-radius: 50px;
+    -webkit-box-shadow: -4px 14px 24px -4px rgb(255, 136, 0);
+    -moz-box-shadow: -4px 14px 24px -4px rgb(255, 136, 0);
+    box-shadow: -4px 14px 24px -4px rgb(255, 136, 0);
+}
+
+

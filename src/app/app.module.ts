@@ -17,6 +17,7 @@ import { ProductlistComponent } from './productlist/productlist.component';
 import { ProductshowcaseComponent } from './productshowcase/productshowcase.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { SaleComponent } from './sale/sale.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { ContactComponent } from './contact/contact.component';
     ProductlistComponent,
     ProductshowcaseComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    SaleComponent
   ],
   imports: [
     BrowserModule,

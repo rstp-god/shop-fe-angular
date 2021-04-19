@@ -1,0 +1,81 @@
+.container {
+    margin-top : 3%;
+    display : flex; 
+    flex-direction: row;
+    justify-content: space-between; 
+    align-content: center;
+}
+
+.loading {
+    content: url(/shop-fe/assets/gifs/spinner.gif);
+    margin-top: 5%!important; 
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 50px;
+    -webkit-box-shadow: -4px 14px 24px -4px rgba(15, 15, 15, 0.719);
+    -moz-box-shadow: -4px 14px 24px -4px rgba(15, 15, 15, 0.719);
+    box-shadow: -4px 14px 24px -4px rgba(15, 15, 15, 0.719);
+}
+
+.item { 
+    box-sizing: border-box; 
+    padding: 2%; 
+    border: 1px solid black;
+    border-radius: 50px;
+    -webkit-animation: 1s linear 1s infinite alternate pulse;; 
+    -moz-animation: 1s linear 1s infinite alternate pulse; 
+    -o-animation: 1s linear 1s infinite alternate pulse;
+    animation: 1s linear 0.5s infinite alternate pulse; 
+}
+
+@-webkit-keyframes pulse {from {
+    -webkit-box-shadow: 0px 0px 28px 8px rgb(255, 136, 0);
+    -moz-box-shadow: 0px 0px 28px 8px rgb(255, 136, 0);
+    box-shadow: 0px 0px 28px 8px rgb(255, 136, 0);
+}  to {
+    -webkit-box-shadow: 0px 0px 28px 17px rgb(255, 136, 0);
+    -moz-box-shadow: 0px 0px 28px 17px rgb(255, 136, 0);
+    box-shadow: 0px 0px 28px 17px rgb(255, 136, 0);
+}}
+
+@-moz-keyframes pulse {from {
+    -webkit-box-shadow: 0px 0px 28px 8px rgb(255, 136, 0);
+    -moz-box-shadow: 0px 0px 28px 8px rgb(255, 136, 0);
+    box-shadow: 0px 0px 28px 8px rgb(255, 136, 0);
+}  to {
+    -webkit-box-shadow: 0px 0px 28px 17px rgb(255, 136, 0);
+    -moz-box-shadow: 0px 0px 28px 17px rgb(255, 136, 0);
+    box-shadow: 0px 0px 28px 17px rgb(255, 136, 0);
+}}
+
+@-o-keyframes pulse {from {
+    -webkit-box-shadow: 0px 0px 28px 8px rgb(255, 136, 0);
+    -moz-box-shadow: 0px 0px 28px 8px rgb(255, 136, 0);
+    box-shadow: 0px 0px 28px 8px rgb(255, 136, 0);
+}  to {
+    -webkit-box-shadow: 0px 0px 28px 17px rgb(255, 136, 0);
+    -moz-box-shadow: 0px 0px 28px 17px rgb(255, 136, 0);
+    box-shadow: 0px 0px 28px 17px rgb(255, 136, 0);
+}}
+
+@keyframes pulse {from {
+    -webkit-box-shadow: 0px 0px 28px 8px rgb(255, 136, 0);
+    -moz-box-shadow: 0px 0px 28px 8px rgb(255, 136, 0);
+    box-shadow: 0px 0px 28px 8px rgb(255, 136, 0);
+}  to {
+    -webkit-box-shadow: 0px 0px 28px 17px rgb(255, 136, 0);
+    -moz-box-shadow: 0px 0px 28px 17px rgb(255, 136, 0);
+    box-shadow: 0px 0px 28px 17px rgb(255, 136, 0);
+}}
+
+
+.item:hover {
+  transition: 1s;
+  transform: scale(1.2);
+}
+
+
+a {
+    color : black; 
+    text-decoration: none; 
+}
