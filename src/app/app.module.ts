@@ -6,18 +6,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { SliderComponent } from './slider/slider.component'; 
+import { HeaderComponent } from './components/header/header.component';
+import { SliderComponent } from './components/slider/slider.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SinginComponent } from './singin/singin.component';
-import { MainpageComponent } from './mainpage/mainpage.component';
-import { RegisterpageComponent } from './registerpage/registerpage.component';
-import { ClientpageComponent } from './clientpage/clientpage.component';
-import { ProductlistComponent } from './productlist/productlist.component';
-import { ProductshowcaseComponent } from './productshowcase/productshowcase.component';
-import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
-import { SaleComponent } from './sale/sale.component';
+import { SinginComponent } from './components/singin/singin.component';
+import { MainpageComponent } from './components/mainpage/mainpage.component';
+import { RegisterpageComponent } from './components/registerpage/registerpage.component';
+import { ClientpageComponent } from './components/clientpage/clientpage.component';
+import { ProductlistComponent } from './components/productlist/productlist.component';
+import { ProductshowcaseComponent } from './components/productshowcase/productshowcase.component';
+import { AboutComponent } from './components/about/about.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { SaleComponent } from './components/sale/sale.component';
 
 
 @NgModule({
@@ -37,9 +37,9 @@ import { SaleComponent } from './sale/sale.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, 
+    AppRoutingModule,
     FormsModule,
-    BrowserAnimationsModule, 
+    BrowserAnimationsModule,
     HttpClientModule
   ],
   providers: [],

@@ -1,0 +1,8 @@
+<div class='container' *ngIf="productInfo$ | async as info" >
+    <h4>{{info.productName}}</h4>
+    <h4>Category : {{info.type}}</h4>
+    <h4>Description : {{info.description}}</h4>
+    <h4>Price : {{info.price}}</h4>
+    <h4>Storage : {{info.count}}</h4>
+    <button>Add to cart!</button>
+</div>

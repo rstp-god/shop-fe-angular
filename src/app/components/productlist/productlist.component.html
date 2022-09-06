@@ -1,4 +1,4 @@
-<div *ngIf='showloading' class='loading'></div>
+<div *ngIf='isLoading' class='loading'></div>
 <div class="grid">
     <div *ngFor = 'let product of products'  style='display : {{all}}'>
         <a routerLink='/{{product.id}}'><h4>{{product.productName}}</h4></a>
@@ -8,8 +8,8 @@
         <button>Add to cart!</button>
     </div>
 </div>
-<div class='grid' *ngIf='!showall'>
-    <div *ngFor = 'let product of productsmall'> 
+<div class='grid' *ngIf='!isAllShow'>
+    <div *ngFor = 'let product of productSmall'>
         <a routerLink='./products/{{product.id}}'><h4>{{product.productName}}</h4></a>
         <h4>Type : {{product.type}}</h4>
         <h4>Price : {{product.price}}</h4>
