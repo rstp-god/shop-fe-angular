@@ -4,20 +4,24 @@
         <a href="">Shopping!</a>
     </div>
     <div class="menubuttons">
-        <button (click)='mainmenu()' class='menubutton'>Main menu</button>
-        <button (click)='products()' class='menubutton'>Products</button>
-        <button (click)='about()' class='menubutton'>About</button>
-        <button (click)='contact()' class='menubutton'>Contact</button>
+        <button (click)='navigate($event)' class='menubutton' value="main">Main menu</button>
+        <button (click)='navigate($event)' class='menubutton' value="products">Products</button>
+        <button (click)='navigate($event)' class='menubutton' value="about">About</button>
+        <button (click)='navigate($event)' class='menubutton' value="contact">Contact</button>
     </div>
-    <div class="login" style="display : {{displayclientpage}}">
-        <a routerLink="./singin">Sing in</a>
-        <p>/</p><a routerLink="./register">Sing up</a>
+  <div *ngIf="!isLogin; else not">
+    <div class="login" >
+      <a routerLink="./singin">Sing in</a>
+      <p>/</p><a routerLink="./register">Sing up</a>
     </div>
-    <div class="login" style="display : {{displayclient}}">
-        <a routerLink="./clientpage">{{name}}</a>
-        <p>/</p>
-        <a routerLink='/' (click)='logout()'>Log Out</a>
+  </div>
+  <ng-template #not>
+    <div class="login">
+      <a routerLink="./clientpage">{{name}}</a>
+      <p>/</p>
+      <a routerLink='/' (click)='logout()'>Log Out</a>
     </div>
+  </ng-template>
 </div>
 <div class="mobilecontainer">
     <div class="mobilelogo">
@@ -25,7 +29,7 @@
         <a href="">Shopping!</a>
     </div>
     <div class="mobiledropdownbutton">
-        <button class="mobilebutton" (click)='togglemobilemenu()'><img
+        <button class="mobilebutton" (click)='toggleMobileMenu()'><img
                 src="https://img.icons8.com/ios/100/000000/chevron-down.png" /></button>
     </div>
 </div>

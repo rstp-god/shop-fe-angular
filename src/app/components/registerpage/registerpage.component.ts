@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UserService} from '../../services/user.service';
+import {map, take, takeUntil} from 'rxjs/operators';
+import {Subject} from 'rxjs';
+import {Response, User} from '../../common/interfaces/user';
 
 
 @Component({
@@ -8,78 +13,47 @@ import { Router } from '@angular/router';
   templateUrl: './registerpage.component.html',
   styleUrls: ['./registerpage.component.css']
 })
-export class RegisterpageComponent implements OnInit {
+export class RegisterpageComponent implements OnDestroy {
 
-  constructor(private http:HttpClient, private router : Router) { }
-
-  public err : string = 'none';
-
-  public firstName!: string;
-  public lastName!: string;
-  public phone!: string;
-  public email!: string;
-  public sex!: any;
-  public bithDate!: Date ;
-  public password!: string;
-
+  public registerForm: FormGroup = new FormGroup<any>({
+    firstName: new FormControl('', [Validators.required, Validators.pattern(/(^[a-zA-Z][a-zA-Z\s]{0,20}[a-zA-Z]$)/)]),
+    lastName: new FormControl(''),
+    phone: new FormControl('', [Validators.required, Validators.pattern(/^(?:[0-9]●?){6,14}[0-9]$/)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    sex: new FormControl(false, Validators.required),
+    password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[A-Za-z])[A-Za-z\d]{5,20}$/)]),
+    bithDate: new FormControl(new Date().getDate())
+  });
   public today: number = Date.now();
+  public isLoading: boolean = false;
+  public isError: boolean = false;
 
-  postData() {
+  private destroy$: Subject<any> = new Subject<any>();
 
-    if ( this.validationData() && this.isPhoneRegister()) {
-
-      this.err = 'none';
-
-    const body = {
-      firstName: this.firstName,
-      lastName: this.lastName,
-      phone: this.phone,
-      email: this.email,
-      sex: this.sex,
-      bithDate: this.bithDate,
-      password: this.password,
-    }
-    this.http.post('https://api.sundancex.ru/users', body).subscribe(res => console.log(res));
-    this.router.navigate(['/singin'])
-    }
-
-    this.err = 'block';
+  constructor(private router: Router,
+              private userService: UserService) {
   }
 
-  validationData() : boolean {
-
-    if (this.firstName === undefined || this.lastName === undefined || this.phone === undefined || this.email === undefined || this.sex === undefined || this.bithDate === undefined || this.password === undefined){
-      return false;
-    }
-
-    if(this.sex == 1){
-      this.sex= true;
-    } else {
-      this.sex=false;
-    }
-
-    if(+this.phone === NaN && this.phone.length < 11){
-      return false;
-    }
-
-    if (this.phone.length === 12 && this.phone[0] === '+') {
-       this.phone = this.phone.substr(1);
-    }
-
-    if (this.email.indexOf('@') == -1) {
-      return false;
-    }
-
-    return true ;
+  ngOnDestroy(): void {
+    this.destroy$.next(null);
+    this.destroy$.complete();
   }
 
-  async isPhoneRegister() : Promise<boolean>{
-    let flag : boolean = true ;
-    await this.http.get(`https://api.sundancex.ru/users?phone=${this.phone}`).toPromise().then(() => {flag = false}).catch(() => {flag = true});
-    return flag;
-  }
-
-  ngOnInit(): void {
+  public register(): void {
+    if (this.registerForm.valid) {
+      this.isLoading = true;
+      this.userService.createUser(this.registerForm.value).pipe(
+        takeUntil(this.destroy$),
+      ).subscribe((value: Response | {}) => {
+        if (Object.keys(value).length) {
+          this.isLoading = false;
+          this.router.navigate(['/singin']);
+        } else {
+          this.isLoading = false;
+          this.isError = true;
+        }
+      });
+    }
   }
 
 }

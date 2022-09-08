@@ -1,103 +1,49 @@
-import {Component, OnInit} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {HeaderComponent} from '../header/header.component';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {Store} from '@ngrx/store';
+import {AppState, selectUser} from '../../store/selectors';
+import {User} from '../../common/interfaces/user';
+import {Observable, Subject} from 'rxjs';
 
 
 @Component({
   selector: 'clientpage',
   templateUrl: './clientpage.component.html',
   styleUrls: ['./clientpage.component.css'],
-  providers: [HeaderComponent]
 })
-export class ClientpageComponent implements OnInit {
+export class ClientpageComponent implements OnInit, OnDestroy {
 
-  constructor(private http: HttpClient, private header: HeaderComponent, private router: Router) {
+  constructor(private router: Router, private store: Store<AppState>) {
   }
 
-  public name!: string;
-  public surname!: string;
-  public email!: string;
-  public purchasesSum!: number;
-  public activated!: boolean;
-  public sex!: boolean;
-  private id!: number;
+  private destroy$: Subject<any> = new Subject<any>();
+  public info$: Observable<User>;
 
-  getUserAvatar() {
-    if (!this.sex) {
-      return 'assets/img/female  avatar.jpg';
-    }
-    return 'assets/img/male  avatar.jpg';
+  ngOnInit(): void {
+    this.info$ = this.store.select(selectUser);
   }
 
-  discountCalc(): string {
-    if (this.purchasesSum < 1000) {
-      return `Need ${1000 - this.purchasesSum} for next 1% discount!`;
+  ngOnDestroy(): void {
+    this.destroy$.complete();
+  }
+
+  public discountCalc(sum: number): string {
+    if (sum < 1000) {
+      return `Need ${1000 - sum} for next 1% discount!`;
     }
-
-    if (this.purchasesSum < 5000) {
-      return `Need ${5000 - this.purchasesSum} for next 5% discount!`;
+    if (sum < 5000) {
+      return `Need ${5000 - sum} for next 5% discount!`;
     }
-
-
-    if (this.purchasesSum < 10000) {
-      return `Need ${10000 - this.purchasesSum} for next 10% discount!`;
+    if (sum < 10000) {
+      return `Need ${10000 - sum} for next 10% discount!`;
     }
-
     return 'Congratulations you rached max discount! 10%! yoohooo';
   }
 
-
-  logout() {
-    this.header.logout();
-    this.router.navigate(['/']);
-  }
-
-  async fillUserInfo() {
-    await this.http.get(`https://api.sundancex.ru/users/${this.id}`).subscribe((res: any) => {
-      this.name = res.firstName;
-      this.surname = res.lastName;
-      this.email = res.email;
-      this.purchasesSum = res.purchasesSum;
-      this.activated = res.activate;
-      this.sex = res.sex;
-      this.header.setNameFromPage(this.name)
-    });
-  }
-
-  isActivated(): string {
-    if (this.activated) {
-      return 'Yes! You activate account!';
+  public getUserAvatar(sex: boolean): string {
+    if (!sex) {
+      return 'assets/img/female  avatar.jpg';
     }
-    return 'Nope, check your Email!';
-  }
-
-
-  // custom func to slice jwt key from cookies
-  getJWTkey(): string {
-    let i = document.cookie.indexOf('jwt'); // find index
-    let accKey = document.cookie.slice(i); // slice everythink that before jwt =
-    accKey = accKey.slice(4); // slice jwt
-    i = accKey.indexOf(';'); // find ; space for next cookie
-    if (i === -1) { // if jwt key is alone cookie or last in cookie list
-      return accKey = 'Bearer ' + accKey;
-    }
-    accKey = 'Bearer ' + accKey.slice(0, i); // slice everyrhink after ;
-    return accKey;
-  }
-
-
-  ngOnInit(): void {
-    const accKey = this.getJWTkey();
-    this.http.get('https://api.sundancex.ru/auth/info',
-      {
-        headers: new HttpHeaders({
-          Authorization: accKey
-        })
-      })
-      .subscribe((res: any) => {
-        this.id = res.id;
-        this.fillUserInfo();
-      });
+    return 'assets/img/male  avatar.jpg';
   }
 }

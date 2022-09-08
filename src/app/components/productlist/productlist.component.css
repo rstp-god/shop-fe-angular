@@ -1,12 +1,12 @@
 .grid {
-    margin-top: 2%; 
+    margin-top: 2%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 2vw
 }
 
 .grid div {
-    padding-left:4%; 
+    padding-left:4%;
     border: 1px solid black;
     border-radius: 50px;
     -webkit-box-shadow: -4px 14px 24px -4px rgba(15, 15, 15, 0.719);
@@ -42,8 +42,8 @@
 }
 
 .loading {
-    content: url(/shop-fe/assets/gifs/spinner.gif);
-    margin-top: 5%!important; 
+    content: url('/assets/gifs/spinner.gif');
+    margin-top: 5%!important;
     margin: 0 auto;
     border: 1px solid black;
     border-radius: 50px;
@@ -54,7 +54,7 @@
 
 
 a {
-    color : black; 
+    color : black;
     text-decoration: none; /* Убираем подчёркивание */
 }
 

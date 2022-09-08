@@ -43,7 +43,6 @@
 }
 
 .login {
-  width: 10%;
   height: 60px;
   right: 0%;
   display: flex;
@@ -59,7 +58,7 @@
   color: black;
   text-decoration: none;
   font-weight: 600;
-  
+
 }
 
 .login p {
@@ -441,7 +440,7 @@
   .container {
     display: none;
   }
-  
+
 .mobilecontainer {
   height: 60px;
   background-color: transparent;
@@ -452,17 +451,17 @@
   align-items: center;
 }
 
-.mobiledropmenu { 
-  position: absolute; 
+.mobiledropmenu {
+  position: absolute;
   left : 5% ;
-  width: 90%; 
+  width: 90%;
   height: 225px;
-  display:flex; 
+  display:flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
   background: linear-gradient(#ffffff, #d3d3d3dc);
-  border-radius: 0 0 45px 45px; 
+  border-radius: 0 0 45px 45px;
   line-height: 45px;
   font-size: 11px;
   text-transform: uppercase;
@@ -471,20 +470,20 @@
   font-weight: 600;
 }
 
-.mobiledropmenu a:hover{ 
+.mobiledropmenu a:hover{
   background: linear-gradient(#d3d3d3dc, #2e2d2ddc);
-  border-radius: 45px; 
+  border-radius: 45px;
 }
 
 .mobilelogin {
-  display: flex; 
-  width: 100%; 
+  display: flex;
+  width: 100%;
   justify-content: center;
 }
 
 .mobilelogin a {
-  display: flex; 
-  width: 50%; 
+  display: flex;
+  width: 50%;
   justify-content: center;
 }
 

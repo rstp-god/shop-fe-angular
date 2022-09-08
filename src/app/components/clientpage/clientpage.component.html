@@ -1,19 +1,18 @@
-<div class="wrapper">
+<div class="wrapper" *ngIf="info$ | async as info">
     <div class='avatar'>
-        <img src={{getUserAvatar()}}>
+        <img [src]='getUserAvatar(info.sex)'/>
     </div>
   <div class="info">
-    <h4>Name : {{name}}</h4>
-    <h4>Surname : {{surname}}</h4>
-    <h4>Registered email : {{email}}</h4>
-    <h4>Purchases Sum : {{purchasesSum}} you so close to discount at every order! {{discountCalc()}}</h4>
-    <h4>Activated : {{isActivated()}}</h4>
+    <h4>Name : {{info.firstName}}</h4>
+    <h4>Surname : {{info.lastName}}</h4>
+    <h4>Registered email : {{info.email}}</h4>
+    <h4>Purchases Sum : {{info.purchasesSum}} you so close to discount at every order! {{discountCalc(info.purchasesSum)}}</h4>
+    <h4>Activated : <span *ngIf="info.isActive; else notActive">Yes! You activate account!</span></h4>
   </div>
   <div class='menu'>
     <a routerLink=''>My Orders</a>
     <a routerLink='./products'>Products</a>
     <a routerLink=''>Edit profile</a>
-    <a routerLink='./' (click)='logout()'>LogOut</a>
   </div>
 </div>
 <h1>You need to check sale products!</h1>
@@ -23,3 +22,6 @@
 <h1>Reccomended for you!</h1>
 <productlist [countItems]='8'></productlist>
 
+<ng-template #notActive>
+  Nope, check your Email!
+</ng-template>

@@ -1,26 +1,34 @@
-<div class="wrapper">
-    <div class="logincontainer">
-       <form action='' (submit)="postData()">
-              <h4>First Name :</h4> 
-              <input type="text" name='firstName' value='' [(ngModel)]="firstName">
-              <h4>Last Name :</h4> 
-              <input type="text" name='lastName' value='' [(ngModel)]="lastName">
-              <h4>Phone :</h4> 
-              <input type="text" name='phone' value='' [(ngModel)]="phone">
-              <h4>Email :</h4> 
-              <input type="text" name='email' value='' [(ngModel)]="email">
-              <h4>Sex :</h4> 
-              <div>
-              <input type="radio" name='sex' value=1  [(ngModel)]="sex"><label>Male</label>
-              <input type="radio" name='sex' value=0 [(ngModel)]="sex"><label>Female</label>
-              </div>
-              <h4>Bithday date :</h4> 
-              <input type="date" name='bithDate' value="{{ today | date:'YYYY-MM-dd'}}" [(ngModel)]="bithDate"> 
-              <h4>Password :</h4> 
-              <input type="password" name='password' value='' [(ngModel)]="password"> 
-              <button>Sing up</button>
-              <span style = 'display : {{err}};  color : red'> Problem with validation! Pls check info!</span>
-       </form>
-       <h5>Already have an account? <a routerLink="/singin">Log in!</a></h5>
-    </div>
+<div class="wrapper" *ngIf="!isError; else error">
+  <div class="logincontainer" *ngIf="!isLoading; else loading">
+    <form action='' [formGroup]="registerForm">
+      <h4>First Name :</h4>
+      <input [class.err]="!registerForm.get('firstName')?.valid" type="text" name='firstName' value='' formControlName="firstName">
+      <h4>Last Name :</h4>
+      <input [class.err]="!registerForm.get('lastName')?.valid" type="text" name='lastName' value='' formControlName="lastName">
+      <h4>Phone :</h4>
+      <input [class.err]="!registerForm.get('phone')?.valid" type="text" name='phone' value='' formControlName="phone">
+      <h4>Email :</h4>
+      <input [class.err]="!registerForm.get('email')?.valid" type="text" name='email' value='' formControlName="email">
+      <h4>Sex :</h4>
+      <div [class.err]="!registerForm.get('sex')?.valid">
+        <input type="radio" name='sex' [value]='true' formControlName="sex"><label>Male</label>
+        <input type="radio" name='sex' [value]='false' formControlName="sex"><label>Female</label>
+      </div>
+      <h4>Bithday date :</h4>
+      <input [class.err]="!registerForm.get('bithDate')?.valid" type="date" name='bithDate' value="{{ today | date:'YYYY-MM-dd'}}" formControlName="bithDate">
+      <h4>Password :</h4>
+      <input [class.err]="!registerForm.get('password')?.valid" type="password" name='password' value='' formControlName="password">
+      <button (click)="register()">Sing up</button>
+    </form>
+    <h5>Already have an account? <a routerLink="/singin">Log in!</a></h5>
   </div>
+</div>
+
+
+<ng-template #loading>
+  <div class="loading"></div>
+</ng-template>
+
+<ng-template #error>
+  <span>Ooops... We have some trouble! Please try again later!</span>
+</ng-template>
